@@ -22,25 +22,59 @@ let subtractBtn = document.querySelector('#subtract');
 let multiplyBtn = document.querySelector('#multiply');
 let divideBtn = document.querySelector('#divide');
 
-let selectedOperator;
-let a;
-let b;
+let selectedOperator = add;
+let a = 0;
+let b = 0;
+output.textContent = 0;
+let nums = [];
 
-b1.addEventListener('click', () => output.textContent += 1);
-b2.addEventListener('click', () => output.textContent += 2);
-b3.addEventListener('click', () => output.textContent += 3);
-b4.addEventListener('click', () => output.textContent += 4);
-b5.addEventListener('click', () => output.textContent += 5);
-b6.addEventListener('click', () => output.textContent += 6);
-b7.addEventListener('click', () => output.textContent += 7);
-b8.addEventListener('click', () => output.textContent += 8);
-b9.addEventListener('click', () => output.textContent += 9);
-b0.addEventListener('click', () => output.textContent += 0);
+b1.addEventListener('click', () => {
+    nums.push(1)
+    output.textContent = nums.join('')
+});
+b2.addEventListener('click', () => {
+    nums.push(2)
+    output.textContent = nums.join('')
+});
+b3.addEventListener('click', () => {
+    nums.push(3)
+    output.textContent = nums.join('')
+});
+b4.addEventListener('click', () => {
+    nums.push(4)
+    output.textContent = nums.join('')
+});
+b5.addEventListener('click', () => {
+    nums.push(5)
+    output.textContent = nums.join('')
+});
+b6.addEventListener('click', () => {
+    nums.push(6)
+    output.textContent = nums.join('')
+});
+b7.addEventListener('click', () => {
+    nums.push(7)
+    output.textContent = nums.join('')
+});
+b8.addEventListener('click', () => {
+    nums.push(8)
+    output.textContent = nums.join('')
+});
+b9.addEventListener('click', () => {
+    nums.push(9)
+    output.textContent = nums.join('')
+});
+b0.addEventListener('click', () => {
+    nums.push(0)
+    output.textContent = nums.join('')
+});
 
 let pickOperator = operator => {
-    a = parseInt(output.textContent);
-    output.textContent = '';
+    a = operate(selectedOperator, a, parseInt(nums.join('')));
+    output.textContent  = a;
+    nums = [];
     selectedOperator = operator;
+    
 };
 
 addBtn.addEventListener('click', () => pickOperator(add));
@@ -49,6 +83,6 @@ multiplyBtn.addEventListener('click', () => pickOperator(multiply));
 divideBtn.addEventListener('click', () => pickOperator(divide));
 
 equals.addEventListener('click', () => {
-    b = parseInt(output.textContent);
+    b = parseInt(nums.join(''));
     output.textContent = operate(selectedOperator, a, b);
 });
