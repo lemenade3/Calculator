@@ -21,6 +21,9 @@ let addBtn = document.querySelector('#add');
 let subtractBtn = document.querySelector('#subtract');
 let multiplyBtn = document.querySelector('#multiply');
 let divideBtn = document.querySelector('#divide');
+let ce = document.querySelector('#back');
+let c = document.querySelector('#clear');
+
 
 let selectedOperator = add;
 let a = 0;
@@ -71,7 +74,7 @@ b0.addEventListener('click', () => {
 
 let pickOperator = operator => {
     a = operate(selectedOperator, a, parseInt(nums.join('')));
-    output.textContent  = a;
+    output.textContent  = Math.round(a * 10000000000) / 10000000000;
     nums = [];
     selectedOperator = operator;
     
@@ -82,7 +85,20 @@ subtractBtn.addEventListener('click', () => pickOperator(subtract));
 multiplyBtn.addEventListener('click', () => pickOperator(multiply));
 divideBtn.addEventListener('click', () => pickOperator(divide));
 
+ce.addEventListener('click', () => {
+    nums.pop();
+    output.textContent = nums.join('')
+})
+
+c.addEventListener('click', () => {
+    selectedOperator = add;
+    a = 0;
+    b = 0;
+    output.textContent = 0;
+    nums = [];
+});
+
 equals.addEventListener('click', () => {
     b = parseInt(nums.join(''));
-    output.textContent = operate(selectedOperator, a, b);
+    output.textContent = Math.round(operate(selectedOperator, a, b) * 10000000000) / 10000000000;
 });
