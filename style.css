@@ -8,15 +8,53 @@ body {
 
 #shell {
     background-color: rgb(61, 61, 61);
-    padding: 20px;
+    margin: 85px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 10px 10px 2.5px rgb(133, 112, 133);
 }
 
 button {
     width: 75px;
-    height: 50px;
+    height: 60px;
+    background-color: rgb(163, 160, 160);
+    font-weight: bold;
+    color: ivory;
+    font-size: 30px;
+    margin: 5px;
+    border-radius: 12px;
+    border-style: solid;
+    text-shadow: 1px 1px black;
 }
 
 #screen {
-    background-color: wheat;
-    height: 30px;
+    background-color: rgb(164, 174, 125);
+    height: 45px;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    font-weight: bold;
+    font-size: 55px;
+    color: rgb(0, 0, 0);
+    font-family: 'digital-clock-font';
+    
+}
+
+@font-face {
+    font-family:'digital-clock-font';
+    src: url('Technology.ttf');
+}
+
+#top {
+    background-color: rgb(75, 75, 75);
+    padding: 30px;
+
+}
+
+#bottom {
+    padding: 20px;
 }
