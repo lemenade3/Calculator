@@ -23,6 +23,7 @@ let multiplyBtn = document.querySelector('#multiply');
 let divideBtn = document.querySelector('#divide');
 let ce = document.querySelector('#back');
 let c = document.querySelector('#clear');
+let decimal = document.querySelector('#decimal');
 
 
 let selectedOperator = add;
@@ -73,7 +74,7 @@ b0.addEventListener('click', () => {
 });
 
 let pickOperator = operator => {
-    a = operate(selectedOperator, a, parseInt(nums.join('')));
+    a = operate(selectedOperator, a, parseFloat(nums.join('')));
     output.textContent  = Math.round(a * 10000000000) / 10000000000;
     nums = [];
     selectedOperator = operator;
@@ -99,6 +100,16 @@ c.addEventListener('click', () => {
 });
 
 equals.addEventListener('click', () => {
-    b = parseInt(nums.join(''));
+    b = parseFloat(nums.join(''));
     output.textContent = Math.round(operate(selectedOperator, a, b) * 10000000000) / 10000000000;
+});
+
+let dp = 0;
+
+decimal.addEventListener('click', () => {
+    if (dp != 0) {
+        nums.push('.')
+        output.textContent = nums.join('')
+        dp++;
+    };
 });
