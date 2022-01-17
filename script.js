@@ -33,44 +33,44 @@ output.textContent = 0;
 let nums = [];
 
 b1.addEventListener('click', () => {
-    nums.push(1)
-    output.textContent = nums.join('')
+    nums.push(1);
+    output.textContent = nums.join('');
 });
 b2.addEventListener('click', () => {
-    nums.push(2)
-    output.textContent = nums.join('')
+    nums.push(2);
+    output.textContent = nums.join('');
 });
 b3.addEventListener('click', () => {
-    nums.push(3)
-    output.textContent = nums.join('')
+    nums.push(3);
+    output.textContent = nums.join('');
 });
 b4.addEventListener('click', () => {
-    nums.push(4)
-    output.textContent = nums.join('')
+    nums.push(4);
+    output.textContent = nums.join('');
 });
 b5.addEventListener('click', () => {
-    nums.push(5)
-    output.textContent = nums.join('')
+    nums.push(5);
+    output.textContent = nums.join('');
 });
 b6.addEventListener('click', () => {
-    nums.push(6)
-    output.textContent = nums.join('')
+    nums.push(6);
+    output.textContent = nums.join('');
 });
 b7.addEventListener('click', () => {
-    nums.push(7)
-    output.textContent = nums.join('')
+    nums.push(7);
+    output.textContent = nums.join('');
 });
 b8.addEventListener('click', () => {
-    nums.push(8)
-    output.textContent = nums.join('')
+    nums.push(8);
+    output.textContent = nums.join('');
 });
 b9.addEventListener('click', () => {
-    nums.push(9)
-    output.textContent = nums.join('')
+    nums.push(9);
+    output.textContent = nums.join('');
 });
 b0.addEventListener('click', () => {
-    nums.push(0)
-    output.textContent = nums.join('')
+    nums.push(0);
+    output.textContent = nums.join('');
 });
 
 let pickOperator = operator => {
@@ -78,7 +78,7 @@ let pickOperator = operator => {
     output.textContent  = Math.round(a * 10000000000) / 10000000000;
     nums = [];
     selectedOperator = operator;
-    
+    dp = 0;
 };
 
 addBtn.addEventListener('click', () => pickOperator(add));
@@ -87,8 +87,11 @@ multiplyBtn.addEventListener('click', () => pickOperator(multiply));
 divideBtn.addEventListener('click', () => pickOperator(divide));
 
 ce.addEventListener('click', () => {
-    nums.pop();
-    output.textContent = nums.join('')
+    let popped = nums.pop();
+    output.textContent = nums.join('');
+    if (popped == '.') {
+        dp = 0;
+    }
 })
 
 c.addEventListener('click', () => {
@@ -97,19 +100,21 @@ c.addEventListener('click', () => {
     b = 0;
     output.textContent = 0;
     nums = [];
+    dp = 0;
 });
 
 equals.addEventListener('click', () => {
     b = parseFloat(nums.join(''));
     output.textContent = Math.round(operate(selectedOperator, a, b) * 10000000000) / 10000000000;
+    dp = 0;
 });
 
 let dp = 0;
 
 decimal.addEventListener('click', () => {
-    if (dp != 0) {
-        nums.push('.')
+    if (dp === 0) {
+        nums.push('.');
         output.textContent = nums.join('')
-        dp++;
-    };
+        dp++
+    }; 
 });
